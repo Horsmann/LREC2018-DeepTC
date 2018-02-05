@@ -4,7 +4,7 @@ Example projects that are used in the publication:
 
 Tobias Horsmann and Torsten Zesch (2018). DeepTC - An Extension of DKPro Text Classification for Fostering Reproducibility of Deep Learning Experiments. In proceedings of International Conference on Language Resources and Evaluation (LREC). Miyazaki, Japan.
 
-* Techniqual Pre-requisites: The experiments require a Java JDK 1.8 or higher and Maven. Eclipse is recommended as IDE.
+* Techniqual Pre-requisites: The experiments require a Java JDK 1.8 or higher and Maven. 
 
 * Provided Examples:
 The example projects demonstrate the usage of DKPro TC for a sequence classification task (part-of-speech tagging) for the deep learning frameworks Keras, DyNet and Deeplearning4j. For a direct comparison to a shallow learning framework a comparable setup with a shallow Conditional Random Field is implemented.
