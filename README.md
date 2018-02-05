@@ -8,7 +8,6 @@ Tobias Horsmann and Torsten Zesch (2018). DeepTC - An Extension of DKPro Text Cl
 
 * Provided Examples:
 The example projects demonstrate the usage of DKPro TC for a sequence classification task (part-of-speech tagging) for the deep learning frameworks Keras, DyNet and Deeplearning4j. For a direct comparison to a shallow learning framework a comparable setup with a shallow Conditional Random Field is implemented.
-
 The Deeplearning4j and CRF example are runnable as-is, as both are Java-based projects. DyNet and Keras requires that the respective framework is already locally installed on the user's computer. The file path to the correct Python installation has to be provided in the experiment.
 
 * Results: 
