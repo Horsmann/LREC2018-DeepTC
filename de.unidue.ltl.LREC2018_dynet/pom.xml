@@ -1,21 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.unidue.ltl</groupId>
 	<artifactId>de.unidue.ltl.LREC2018_dynet</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<repositories>
-		<repository>
-			<id>ukp-oss-snapshots</id>
-			<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -151,4 +137,10 @@
 			</artifactId>
 		</dependency>
 	</dependencies>
+	<parent>
+		<groupId>de.unidue.ltl</groupId>
+		<artifactId>de.unidue.ltl.LREC2018</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../de.unidue.ltl.LREC2018</relativePath>
+	</parent>
 </project>
