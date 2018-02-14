@@ -34,6 +34,7 @@ import org.dkpro.tc.api.exception.TextClassificationException;
 import org.dkpro.tc.api.features.Feature;
 import org.dkpro.tc.api.features.FeatureExtractor;
 import org.dkpro.tc.api.features.FeatureExtractorResource_ImplBase;
+import org.dkpro.tc.api.features.FeatureType;
 import org.dkpro.tc.api.type.TextClassificationTarget;
 
 public class BrownCluster
@@ -117,7 +118,7 @@ public class BrownCluster
 
         if (bitCode == null) {
             for (int i = 0; i < maxClustLength; i = i + stepSize) {
-                features.add(new Feature(FEATURE_NAME + (i + stepSize), NOT_SET, true));
+                features.add(new Feature(FEATURE_NAME + (i + stepSize), NOT_SET, true, FeatureType.STRING));
             }
             return features;
         }
@@ -141,7 +142,7 @@ public class BrownCluster
             else {
                 subCode = bitCode.substring(0, i + stepSize);
             }
-            features.add(new Feature(FEATURE_NAME + (i + stepSize), subCode, dummy));
+            features.add(new Feature(FEATURE_NAME + (i + stepSize), subCode, dummy, FeatureType.STRING));
             // System.out.println(subCode);
         }
 

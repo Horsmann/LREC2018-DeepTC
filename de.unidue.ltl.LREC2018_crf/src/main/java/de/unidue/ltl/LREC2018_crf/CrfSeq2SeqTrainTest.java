@@ -21,7 +21,7 @@ import org.dkpro.tc.api.features.TcFeatureSet;
 import org.dkpro.tc.core.Constants;
 import org.dkpro.tc.features.tcu.TargetSurfaceFormContextFeature;
 import org.dkpro.tc.ml.ExperimentTrainTest;
-import org.dkpro.tc.ml.crfsuite.CRFSuiteAdapter;
+import org.dkpro.tc.ml.crfsuite.CrfSuiteAdapter;
 
 import de.tudarmstadt.ukp.dkpro.core.io.tei.TeiReader;
 import de.unidue.ltl.LREC2018.SequenceOutcomeAnnotator;
@@ -62,8 +62,8 @@ public class CrfSeq2SeqTrainTest implements Constants {
 			throws ResourceInitializationException {
 
 		@SuppressWarnings("unchecked")
-		Dimension<List<String>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
-				asList(new String[] { CRFSuiteAdapter.ALGORITHM_ADAPTIVE_REGULARIZATION_OF_WEIGHT_VECTOR }));
+		Dimension<List<Object>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
+				asList(new Object[] { new CrfSuiteAdapter(), CrfSuiteAdapter.ALGORITHM_ADAPTIVE_REGULARIZATION_OF_WEIGHT_VECTOR }));
 
 		
 		CollectionReaderDescription trainReader = createReaderDescription(
@@ -121,7 +121,7 @@ public class CrfSeq2SeqTrainTest implements Constants {
 	// ##### TRAIN-TEST #####
 	protected void runTrainTest(ParameterSpace pSpace) throws Exception {
 
-		ExperimentTrainTest batch = new ExperimentTrainTest("CrfExperiment", CRFSuiteAdapter.class);
+		ExperimentTrainTest batch = new ExperimentTrainTest("CrfExperiment");
 		batch.setPreprocessing(createEngineDescription(SequenceOutcomeAnnotator.class));
 		batch.setParameterSpace(pSpace);
 		batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
