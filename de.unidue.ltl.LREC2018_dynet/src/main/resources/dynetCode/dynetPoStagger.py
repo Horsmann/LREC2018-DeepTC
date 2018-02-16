@@ -9,7 +9,7 @@ import numpy as np
 
 if  __name__ =='__main__':
 
-	parser = argparse.ArgumentParser(description="LREC Keras")
+	parser = argparse.ArgumentParser(description="LREC DyNet")
 	parser.add_argument("--trainData", nargs=1, required=True)
 	parser.add_argument("--trainOutcome", nargs=1, required=True)
 	parser.add_argument("--testData", nargs=1, required=True)
