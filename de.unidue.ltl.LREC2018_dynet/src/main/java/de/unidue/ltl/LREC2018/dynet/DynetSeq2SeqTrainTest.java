@@ -41,7 +41,6 @@ import org.dkpro.tc.ml.DeepLearningExperimentTrainTest;
 import org.dkpro.tc.ml.dynet.DynetAdapter;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
 
-import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreebankChunkedReader;
 import de.tudarmstadt.ukp.dkpro.core.io.tei.TeiReader;
 import de.unidue.ltl.LREC2018.SequenceOutcomeAnnotator;
 
@@ -131,12 +130,12 @@ public class DynetSeq2SeqTrainTest implements Constants {
 				Dimension.create(DIM_VECTORIZE_TO_INTEGER, true), 
 				Dimension.create(DIM_USER_CODE, dyNetUserCode));
 
-		DeepLearningExperimentTrainTest exp = new DeepLearningExperimentTrainTest("DyNetExperiment", DynetAdapter.class);
-		exp.setParameterSpace(pSpace);
-		exp.addReport(BatchTrainTestReport.class);
-		exp.setPreprocessing(createEngineDescription(SequenceOutcomeAnnotator.class));
+		DeepLearningExperimentTrainTest experiment = new DeepLearningExperimentTrainTest("DyNetExperiment", DynetAdapter.class);
+		experiment.setParameterSpace(pSpace);
+		experiment.addReport(BatchTrainTestReport.class);
+		experiment.setPreprocessing(createEngineDescription(SequenceOutcomeAnnotator.class));
 
-		Lab.getInstance().run(exp);
+		Lab.getInstance().run(experiment);
 	}
 
 }

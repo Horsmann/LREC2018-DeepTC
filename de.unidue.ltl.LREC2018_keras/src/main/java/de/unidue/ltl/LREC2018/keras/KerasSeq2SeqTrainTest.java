@@ -38,9 +38,9 @@ import org.dkpro.lab.task.ParameterSpace;
 import org.dkpro.tc.core.Constants;
 import org.dkpro.tc.ml.DeepLearningExperimentTrainTest;
 import org.dkpro.tc.ml.keras.KerasAdapter;
+import org.dkpro.tc.ml.report.BatchRuntimeReport;
 import org.dkpro.tc.ml.report.BatchTrainTestReport;
 
-import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreebankChunkedReader;
 import de.tudarmstadt.ukp.dkpro.core.io.tei.TeiReader;
 import de.unidue.ltl.LREC2018.SequenceOutcomeAnnotator;
 
@@ -133,14 +133,15 @@ public class KerasSeq2SeqTrainTest
 				Dimension.create(DIM_VECTORIZE_TO_INTEGER, true),
 				Dimension.create(DIM_USER_CODE, userCode));
 
-		DeepLearningExperimentTrainTest exp = 
+		DeepLearningExperimentTrainTest experiment = 
 				new DeepLearningExperimentTrainTest("KerasExperiment", KerasAdapter.class);
 		
-		exp.setParameterSpace(pSpace);
-		exp.setPreprocessing(createEngineDescription(SequenceOutcomeAnnotator.class));
-		exp.addReport(BatchTrainTestReport.class);
+		experiment.setParameterSpace(pSpace);
+		experiment.setPreprocessing(createEngineDescription(SequenceOutcomeAnnotator.class));
+		experiment.addReport(BatchTrainTestReport.class);
+		experiment.addReport(BatchRuntimeReport.class);
 		
-		Lab.getInstance().run(exp);
+		Lab.getInstance().run(experiment);
     }
   
 }

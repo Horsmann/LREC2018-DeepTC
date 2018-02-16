@@ -22,6 +22,7 @@ import org.dkpro.tc.core.Constants;
 import org.dkpro.tc.features.tcu.TargetSurfaceFormContextFeature;
 import org.dkpro.tc.ml.ExperimentTrainTest;
 import org.dkpro.tc.ml.crfsuite.CrfSuiteAdapter;
+import org.dkpro.tc.ml.report.BatchRuntimeReport;
 
 import de.tudarmstadt.ukp.dkpro.core.io.tei.TeiReader;
 import de.unidue.ltl.LREC2018.SequenceOutcomeAnnotator;
@@ -121,12 +122,13 @@ public class CrfSeq2SeqTrainTest implements Constants {
 	// ##### TRAIN-TEST #####
 	protected void runTrainTest(ParameterSpace pSpace) throws Exception {
 
-		ExperimentTrainTest batch = new ExperimentTrainTest("CrfExperiment");
-		batch.setPreprocessing(createEngineDescription(SequenceOutcomeAnnotator.class));
-		batch.setParameterSpace(pSpace);
-		batch.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
+		ExperimentTrainTest experiment = new ExperimentTrainTest("CrfExperiment");
+		experiment.setPreprocessing(createEngineDescription(SequenceOutcomeAnnotator.class));
+		experiment.setParameterSpace(pSpace);
+		experiment.setExecutionPolicy(ExecutionPolicy.RUN_AGAIN);
+		experiment.addReport(BatchRuntimeReport.class);
 
 		// Run
-		Lab.getInstance().run(batch);
+		Lab.getInstance().run(experiment);
 	}
 }
