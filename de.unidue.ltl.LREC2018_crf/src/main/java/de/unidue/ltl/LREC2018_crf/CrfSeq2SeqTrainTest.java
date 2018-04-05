@@ -62,10 +62,13 @@ public class CrfSeq2SeqTrainTest implements Constants {
 	public static ParameterSpace getParameterSpace(String train, String test, String brown)
 			throws ResourceInitializationException {
 
-		@SuppressWarnings("unchecked")
-		Dimension<List<Object>> dimClassificationArgs = Dimension.create(DIM_CLASSIFICATION_ARGS,
-				asList(new Object[] { new CrfSuiteAdapter(), CrfSuiteAdapter.ALGORITHM_ADAPTIVE_REGULARIZATION_OF_WEIGHT_VECTOR }));
+        Map<String, Object> crf = new HashMap<>();
+        crf.put(DIM_CLASSIFICATION_ARGS, new Object[] { new CrfSuiteAdapter(),
+                CrfSuiteAdapter.ALGORITHM_ADAPTIVE_REGULARIZATION_OF_WEIGHT_VECTOR });
+        crf.put(DIM_DATA_WRITER, new CrfSuiteAdapter().getDataWriterClass().getName());
+        crf.put(DIM_FEATURE_USE_SPARSE, new CrfSuiteAdapter().useSparseFeatures());
 
+        Dimension<Map<String, Object>> dimClassifiers = Dimension.createBundle("classification", crf);
 		
 		CollectionReaderDescription trainReader = createReaderDescription(
 									TeiReader.class,
@@ -114,7 +117,7 @@ public class CrfSeq2SeqTrainTest implements Constants {
 		ParameterSpace pSpace;
 		pSpace = new ParameterSpace(Dimension.createBundle("readers", dimReaders),
 				Dimension.create(DIM_LEARNING_MODE, LM_SINGLE_LABEL), Dimension.create(DIM_FEATURE_MODE, FM_SEQUENCE),
-				dimFeatureSets, dimClassificationArgs);
+				dimFeatureSets, dimClassifiers);
 
 		return pSpace;
 	}
