@@ -65,7 +65,7 @@ public class CrfSeq2SeqTrainTest implements Constants {
         Map<String, Object> crf = new HashMap<>();
         crf.put(DIM_CLASSIFICATION_ARGS, new Object[] { new CrfSuiteAdapter(),
                 CrfSuiteAdapter.ALGORITHM_ADAPTIVE_REGULARIZATION_OF_WEIGHT_VECTOR });
-        crf.put(DIM_DATA_WRITER, new CrfSuiteAdapter().getDataWriterClass().getName());
+        crf.put(DIM_DATA_WRITER, new CrfSuiteAdapter().getDataWriterClass());
         crf.put(DIM_FEATURE_USE_SPARSE, new CrfSuiteAdapter().useSparseFeatures());
 
         Dimension<Map<String, Object>> dimClassifiers = Dimension.createBundle("classification", crf);
